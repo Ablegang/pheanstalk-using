@@ -1,0 +1,29 @@
+{
+  "name": "ablegang/pheanstalk-using",
+  "description": "pheanstalk 的应用案例",
+  "keywords": [
+    "pheanstalk",
+    "beanstalkd",
+    "php",
+    "半醒的狐狸"
+  ],
+  "author": [
+    {
+      "name": "半醒的狐狸",
+      "email": "2252390865@qq.com",
+      "homepage": "http://www.vsonweb.com",
+      "role": "Master"
+    }
+  ],
+  "license": "MIT",
+  "require": {
+    "php": ">=7.1.0",
+    "pheanstalk": "v4.0.0-alpha.3"
+  },
+  "minimum-stability": "dev",
+  "autoload": {
+    "psr-4": {
+      "Ablegang\\PheanstalkUsing\\": "src/"
+    }
+  }
+}
