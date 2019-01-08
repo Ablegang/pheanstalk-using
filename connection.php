@@ -9,4 +9,9 @@
 // | Author: Object,半醒的狐狸<2252390865@qq.com>
 // +----------------------------------------------------------------------
 
-echo 9;
+include_once 'vendor/autoload.php';
+
+$conn = \Pheanstalk\Pheanstalk::create('beanstalkd', 11300, 10);
+$conn->useTube('test');
+
+print_r($conn);
