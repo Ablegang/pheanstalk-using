@@ -14,7 +14,7 @@ include_once "vendor/autoload.php";
 $conn = \Pheanstalk\Pheanstalk::create('beanstalkd', 11300, 10);
 
 //$conn->useTube('myTube');
-$job = $conn->put('this is my 2nd job !');
+$job = $conn->put('试试看 !',1);
 
 print_r($job);
 
