@@ -13,7 +13,7 @@ include_once "vendor/autoload.php";
 
 $conn = \Pheanstalk\Pheanstalk::create('beanstalkd', 11300, 10);
 
-//$conn->useTube('myTube');
+$conn->useTube('myTube');
 $job = $conn->put('试试看 !',1);
 
 print_r($job);
