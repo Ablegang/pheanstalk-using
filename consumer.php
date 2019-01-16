@@ -29,13 +29,13 @@ try {
 
     // 处理 job ...
 
-   $conn->delete($job2);
+   $conn->delete($job2); // 处理成功，删除这个 job
 
-    $conn->release($job2);
+    $conn->release($job2); // 处理没成功，将 job 从 reserved 状态改回 ready
 
-    $conn->bury($job2);
+    $conn->bury($job2); // 不具备处理 job 的条件，将 job 状态改为 buried
 
-    $conn->touch($job2);
+    $conn->touch($job2); // 处理时间过长，ttr 不够用，延长一次 ttr
 
 } catch (\Pheanstalk\Exception\DeadlineSoonException $e) {
     print_r('deadline soon' . $e->getMessage());
