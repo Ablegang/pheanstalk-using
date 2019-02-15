@@ -18,7 +18,8 @@
   "license": "MIT",
   "require": {
     "php": ">=7.1.0",
-    "pda/pheanstalk": "v4.0.0-alpha.3"
+    "pda/pheanstalk": "v4.0.0-alpha.3",
+    "catfan/Medoo": "dev-master"
   },
   "minimum-stability": "dev",
   "autoload": {
