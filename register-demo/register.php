@@ -63,7 +63,7 @@ $smsJob = $conn->put($jobData);
 $conn->useTube('register_email');
 $emailJob = $conn->put($jobData);
 
-echo '注册成功：<br>';
+echo "注册成功：\r\n" ;
 print_r($user);
 print_r($smsJob);
 print_r($emailJob);

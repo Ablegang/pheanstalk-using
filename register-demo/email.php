@@ -24,9 +24,6 @@ function sendEmail($user)
 while (1) {
     try {
         $job = $conn->reserve();
-        if ($job === null) {
-            throw new Exception('没有任务');
-        }
 
         // 发送邮件
         if (sendEmail($job->getData())) {
@@ -34,13 +31,13 @@ while (1) {
             $conn->delete($job);
         } else {
             // 处理失败
-            $conn->release();
+            print_r("处理失败，调用 release 后重新处理");
+            $conn->release($job);
         }
     } catch (Exception $e) {
         print_r($e->getMessage());
-        die();
     }
 
-    echo "欢迎邮件发送成功<br>";
+    echo "欢迎邮件发送成功\r\n";
     usleep(500000); //  每 500ms 接收 job
 }
