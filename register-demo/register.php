@@ -15,14 +15,15 @@ use Medoo\Medoo;
 use Pheanstalk\Pheanstalk;
 
 // demo 只为演示如何使用 pheanstalk  ，所以不做精细化处理，如注入、加密、字段设计等，只能用于简单测试
-$username = trim($_GET['username']);
-$password = trim($_GET['password']);
-$email = trim($_GET['email']);
-$phone = trim($_GET['phone']);
+$param = getopt('u:p:e:m:');
+$username = $param['u'];
+$password = $param['p'];
+$email = $param['e'];
+$phone = $param['m'];
 
 $db = new  Medoo([
     'database_type' => 'mysql',
-    'database_name' => 'demo',
+    'database_name' => 'test',
     'server' => 'mysql',
     'username' => 'root',
     'password' => 'root',

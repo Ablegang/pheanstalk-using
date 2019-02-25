@@ -21,23 +21,26 @@ function sendSms($user)
     return random_int(0, 1); //  取随机数，模拟发送成功与失败
 }
 
-try {
-    $job = $conn->reserveWithTimeout(10);
-    if ($job === null) {
-        throw new Exception('没有任务');
+while (1) {
+    try {
+        $job = $conn->reserveWithTimeout(1);
+        if ($job === null) {
+            throw new Exception('没有任务');
+        }
+
+        // 发送邮件
+        if (sendSms($job->getData())) {
+            //  处理成功
+            $conn->delete($job);
+        } else {
+            // 处理失败
+            $conn->release();
+        }
+    } catch (Exception $e) {
+        print_r($e->getMessage());
+        die();
     }
 
-    // 发送邮件
-    if (sendSms($job->getData())) {
-        //  处理成功
-        $conn->delete($job);
-    } else {
-        // 处理失败
-        $conn->release();
-    }
-} catch (Exception $e) {
-    print_r($e->getMessage());
-    die();
+    echo "欢迎短信发送成功<br>";
+    usleep(500000);
 }
-
-echo "欢迎短信发送成功";
